@@ -1,44 +1,49 @@
 # Chen Jiang — Academic Homepage
 
-Static academic homepage. This directory is the **single source of truth** for the site; the
-`我的学术主页/dist` and `chen-jiang-homepage/dist` folders are archived copies of earlier deployments.
+Live site: **https://j128djsj.github.io/**
 
-## Automatic deployment (GitHub Pages)
+Static site (plain HTML/CSS/JS, no build step, no dependencies). Every push to `main` republishes it
+in about 40 seconds.
 
-Pushing to `main` triggers `.github/workflows/pages.yml`, which uploads this directory as a Pages
-artifact and publishes it. No build step, no dependencies.
+## How deployment works
 
-One-time setup (already scripted in `../deploy-setup.md`):
+| Piece | Value |
+|---|---|
+| Repository | `j128djsj/j128djsj.github.io` |
+| Branch | `main` |
+| Hosting | GitHub Pages, source = **GitHub Actions** |
+| Workflow | `.github/workflows/pages.yml` (checkout → configure-pages → upload artifact → deploy) |
+| Optional workflow | `.github/workflows/cloudflare.yml` — skipped automatically unless `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` secrets exist |
 
-1. Create the public repository `j128djsj/j128djsj.github.io` (exact name).
-2. Push this directory to `main`.
-3. Repository Settings → Pages → Source: **GitHub Actions**.
-4. The first push publishes https://j128djsj.github.io/.
-
-After that: edit `index.html` / `style.css` → commit → push → live in ~40 seconds.
-
-## Manual deployment (Cloudflare Pages)
-
-The canonical URL is **https://j128djsj.github.io/** — `og:url`, `og:image` and `<link rel="canonical">`
-all point there, including in the archived copies under `../我的学术主页/dist` and
-`../chen-jiang-homepage/dist`.
-
-The site was also published on Cloudflare (`chen-jiang.pages.dev`) and Sites
-(`chen-jiang.jithandulai.chatgpt.site`); both are now aliases, not the canonical address. To push it
-there anyway, use `../deploy-cloudflare.ps1` with a `CLOUDFLARE_API_TOKEN`:
+To publish a change:
 
 ```powershell
-$env:CLOUDFLARE_API_TOKEN = "..."
-$env:CLOUDFLARE_ACCOUNT_ID = "..."
-.\deploy-cloudflare.ps1
+git add -A
+git commit -m "update bio"
+git push
+```
+
+Then watch the **Actions** tab. No manual upload, no `dist/` folder — the repository root **is** the site.
+
+## Local preview
+
+Open `index.html` directly in a browser, or serve the folder:
+
+```powershell
+python -m http.server 4173
+# http://127.0.0.1:4173
 ```
 
 ## Edit
 
 - `index.html`: biography, research interests, publications, education, links.
 - `style.css`: colors, typography, spacing, responsive layout.
-- `script.js`: citation dialog, BibTeX, clipboard.
+- `script.js`: citation dialog, BibTeX, clipboard handling.
 - `assets/`: avatar, publication figures, favicon.
 
-All paths are relative, so the site works both at a domain root and in a subdirectory.
-`.nojekyll` keeps GitHub Pages from running Jekyll.
+## Notes
+
+- Canonical URL is `https://j128djsj.github.io/`; `og:url` and `og:image` point there too.
+- All asset paths are relative, so the site also works in a subdirectory or another host.
+- `.nojekyll` is kept so the files are served verbatim if branch-based deployment is ever used again.
+- The avatar and the publication figures were supplied by Chen Jiang; figures keep their original rights.

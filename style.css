@@ -334,6 +334,11 @@ h2::after {
   font-size: 14px;
   line-height: 1.6;
 }
+.entry-main .sub-school {
+  margin-top: 1px;
+  color: var(--faint);
+  font-size: 13px;
+}
 .entry-date {
   margin: 0;
   color: var(--faint);

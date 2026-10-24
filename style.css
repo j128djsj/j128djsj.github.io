@@ -143,20 +143,18 @@ h1 {
 /* ---------- pull quote ---------- */
 
 .pullquote {
-  margin: 58px 0 0;
-  padding: 40px 24px;
+  margin: 46px 0 0;
+  padding: 24px 12px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   text-align: center;
-  background: linear-gradient(180deg, #fbfcfd 0%, #ffffff 100%);
 }
 .pullquote p {
   margin: 0;
   font-family: Georgia, "Times New Roman", "Songti SC", serif;
   font-style: italic;
-  font-size: 26px;
-  line-height: 1.45;
-  letter-spacing: -0.01em;
+  font-size: 19px;
+  line-height: 1.5;
   color: var(--heading);
   text-wrap: balance;
 }
@@ -538,8 +536,8 @@ pre {
   .publication h3 { font-size: 16px; }
   .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .entry-date { color: var(--muted); }
-  .pullquote { margin-top: 38px; padding: 30px 8px; }
-  .pullquote p { font-size: 20px; }
+  .pullquote { margin-top: 36px; padding: 20px 4px; }
+  .pullquote p { font-size: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

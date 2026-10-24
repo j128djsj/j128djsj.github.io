@@ -66,3 +66,25 @@ copyButton.addEventListener("click", async () => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// The email chip copies the address instead of relying on a mailto: handler, which silently
+// does nothing on machines without a default mail app.
+const copyLink = document.querySelector("[data-copy]");
+if (copyLink) {
+  copyLink.addEventListener("click", async event => {
+    const value = copyLink.dataset.copy;
+    try {
+      await navigator.clipboard.writeText(value);
+      event.preventDefault();
+      const label = copyLink.textContent;
+      copyLink.textContent = "Copied";
+      copyLink.classList.add("is-copied");
+      window.setTimeout(() => {
+        copyLink.textContent = label;
+        copyLink.classList.remove("is-copied");
+      }, 1600);
+    } catch {
+      // Clipboard unavailable (http, permissions): keep the default mailto: behaviour.
+    }
+  });
+}

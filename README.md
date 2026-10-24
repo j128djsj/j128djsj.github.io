@@ -38,11 +38,11 @@ python -m http.server 4173
 - `index.html`: biography, research interests, publications, education, links.
 - `style.css`: colors, typography, spacing, responsive layout.
 - `script.js`: citation dialog, BibTeX, clipboard handling.
-- `assets/`: avatar, publication figures, favicon.
+- `assets/`: avatar and favicon.
 
 ## Notes
 
 - Canonical URL is `https://j128djsj.github.io/`; `og:url` and `og:image` point there too.
 - All asset paths are relative, so the site also works in a subdirectory or another host.
 - `.nojekyll` is kept so the files are served verbatim if branch-based deployment is ever used again.
-- The avatar and the publication figures were supplied by Chen Jiang; figures keep their original rights.
+- The avatar was supplied by Chen Jiang.

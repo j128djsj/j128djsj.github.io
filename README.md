@@ -13,7 +13,6 @@ in about 40 seconds.
 | Branch | `main` |
 | Hosting | GitHub Pages, source = **GitHub Actions** |
 | Workflow | `.github/workflows/pages.yml` (checkout → configure-pages → upload artifact → deploy) |
-| Optional workflow | `.github/workflows/cloudflare.yml` — skipped automatically unless `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` secrets exist |
 
 To publish a change:
 

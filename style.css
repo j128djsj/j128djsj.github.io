@@ -203,9 +203,20 @@ h2::after {
 }
 .research-list li {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 18px;
+  align-items: baseline;
   padding-left: 18px;
   font-size: 15.5px;
   line-height: 1.6;
+}
+.research-date {
+  color: var(--faint);
+  font-size: 13px;
+  font-style: italic;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 .research-list li::before {
   content: "";

@@ -140,18 +140,24 @@ h1 {
 }
 .section-nav a:hover { color: var(--accent); text-decoration: none; }
 
-.quote {
-  margin: 26px 0 0;
-  padding: 0;
-  border: 0;
+/* ---------- pull quote ---------- */
+
+.pullquote {
+  margin: 58px 0 0;
+  padding: 40px 24px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  background: linear-gradient(180deg, #fbfcfd 0%, #ffffff 100%);
 }
-.quote p {
+.pullquote p {
   margin: 0;
   font-family: Georgia, "Times New Roman", "Songti SC", serif;
   font-style: italic;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--muted);
+  font-size: 26px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--heading);
   text-wrap: balance;
 }
 
@@ -509,8 +515,6 @@ pre {
   .role { margin-bottom: 12px; }
   .contact { margin-bottom: 0; grid-column: 2; }
   .section-nav, .updated { display: none; }
-  .quote { grid-column: 1 / -1; margin-top: 22px; }
-  .quote p { font-size: 13.5px; }
   section + section { margin-top: 38px; }
 }
 
@@ -534,6 +538,8 @@ pre {
   .publication h3 { font-size: 16px; }
   .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .entry-date { color: var(--muted); }
+  .pullquote { margin-top: 38px; padding: 30px 8px; }
+  .pullquote p { font-size: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

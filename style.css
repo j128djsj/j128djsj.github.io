@@ -140,8 +140,23 @@ h1 {
 }
 .section-nav a:hover { color: var(--accent); text-decoration: none; }
 
+.quote {
+  margin: 26px 0 0;
+  padding: 0;
+  border: 0;
+}
+.quote p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", "Songti SC", serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: balance;
+}
+
 .updated {
-  margin: 24px 0 0;
+  margin: 22px 0 0;
   color: var(--faint);
   font-size: 11.5px;
 }
@@ -494,6 +509,8 @@ pre {
   .role { margin-bottom: 12px; }
   .contact { margin-bottom: 0; grid-column: 2; }
   .section-nav, .updated { display: none; }
+  .quote { grid-column: 1 / -1; margin-top: 22px; }
+  .quote p { font-size: 13.5px; }
   section + section { margin-top: 38px; }
 }
 

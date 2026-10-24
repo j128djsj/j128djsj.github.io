@@ -19,8 +19,13 @@ After that: edit `index.html` / `style.css` → commit → push → live in ~40 
 
 ## Manual deployment (Cloudflare Pages)
 
-The site is also published on Cloudflare (canonical currently `chen-jiang.pages.dev`). Use
-`../deploy-cloudflare.ps1` with a `CLOUDFLARE_API_TOKEN`:
+The canonical URL is **https://j128djsj.github.io/** — `og:url`, `og:image` and `<link rel="canonical">`
+all point there, including in the archived copies under `../我的学术主页/dist` and
+`../chen-jiang-homepage/dist`.
+
+The site was also published on Cloudflare (`chen-jiang.pages.dev`) and Sites
+(`chen-jiang.jithandulai.chatgpt.site`); both are now aliases, not the canonical address. To push it
+there anyway, use `../deploy-cloudflare.ps1` with a `CLOUDFLARE_API_TOKEN`:
 
 ```powershell
 $env:CLOUDFLARE_API_TOKEN = "..."

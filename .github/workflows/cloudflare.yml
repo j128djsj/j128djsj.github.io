@@ -1,0 +1,43 @@
+name: Deploy site to Cloudflare Pages
+
+# 可选工作流：只有配置了仓库 Secrets 才会运行，否则自动跳过（不会标红）。
+# 需要两个 Secrets：
+#   CLOUDFLARE_API_TOKEN  —— 权限 Cloudflare Pages: Edit
+#   CLOUDFLARE_ACCOUNT_ID —— 账号 ID
+# 变量 CF_PAGES_PROJECT 可在仓库 Variables 里改成你的 Pages 项目名（默认 chen-jiang）。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CF_PROJECT: ${{ vars.CF_PAGES_PROJECT || 'chen-jiang' }}
+    steps:
+      - name: Skip when Cloudflare secrets are absent
+        if: env.CF_TOKEN == ''
+        run: echo "CLOUDFLARE_API_TOKEN 未配置，跳过 Cloudflare 部署。"
+
+      - name: Checkout
+        if: env.CF_TOKEN != ''
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        if: env.CF_TOKEN != ''
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ env.CF_TOKEN }}
+          accountId: ${{ env.CF_ACCOUNT }}
+          command: pages deploy . --project-name=${{ env.CF_PROJECT }} --branch=main

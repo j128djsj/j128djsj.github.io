@@ -138,23 +138,27 @@ h1 {
 }
 .section-nav a:hover { color: var(--accent); text-decoration: none; }
 
-/* ---------- pull quote ---------- */
+/* ---------- personal motto ---------- */
 
 .pullquote {
   margin: 28px 0 0;
-  padding: 18px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  padding: 0;
   text-align: left;
+}
+.pullquote::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  margin-bottom: 12px;
+  background: var(--line-strong);
 }
 .pullquote p {
   margin: 0;
   font-family: Georgia, "Times New Roman", "Songti SC", serif;
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.75;
   color: var(--muted);
-  text-wrap: balance;
 }
 
 .updated {
@@ -543,7 +547,7 @@ pre {
   h1 { margin: 0 0 4px; font-size: 25px; }
   .contact { margin-top: 8px; margin-bottom: 0; grid-column: 2; }
   .section-nav, .updated { display: none; }
-  .pullquote { grid-column: 1 / -1; margin-top: 24px; padding: 16px 0; }
+  .pullquote { grid-column: 1 / -1; margin-top: 24px; }
   section + section { margin-top: 38px; }
 }
 
@@ -565,8 +569,6 @@ pre {
   .publication h3 { font-size: 16px; }
   .entry { padding-left: 24px; }
   .entry-date { color: var(--muted); }
-  .pullquote { padding: 14px 0; }
-  .pullquote p { font-size: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -343,15 +343,36 @@ h2::after {
 
 /* ---------- education ---------- */
 
-.entry {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 4px 24px;
-  align-items: baseline;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
+.education-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.entry:first-of-type { border-top: 0; padding-top: 2px; }
+.entry {
+  position: relative;
+  padding: 0 0 30px 28px;
+}
+.entry:last-child { padding-bottom: 0; }
+.entry::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #9f444b;
+}
+.entry:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  bottom: -11px;
+  left: 4px;
+  width: 2px;
+  background: var(--line);
+}
 
 .entry-main h3 {
   margin: 0 0 1px;
@@ -372,7 +393,7 @@ h2::after {
   font-size: 13px;
 }
 .entry-date {
-  margin: 0;
+  margin: 0 0 8px;
   color: var(--faint);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
@@ -535,7 +556,7 @@ pre {
   .news-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .news-date { justify-self: start; }
   .publication h3 { font-size: 16px; }
-  .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .entry { padding-left: 24px; }
   .entry-date { color: var(--muted); }
   .pullquote { padding: 14px 0; }
   .pullquote p { font-size: 17px; }

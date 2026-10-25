@@ -103,28 +103,32 @@ h1 {
 .contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 12px;
   margin-bottom: 24px;
 }
 .contact a {
-  padding: 4px 11px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: 6px;
+  color: #6c706a;
 }
+.contact-icon, .copy-confirmation { width: 24px; height: 24px; flex: 0 0 auto; }
+.copy-confirmation { display: none; }
 .contact a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  color: var(--heading);
+  background: var(--chip-bg);
   text-decoration: none;
 }
 .contact a.is-copied {
-  border-color: var(--heading);
-  background: var(--heading);
-  color: #fff;
+  color: var(--heading);
+  background: var(--chip-bg);
 }
+.contact a.is-copied .contact-icon { display: none; }
+.contact a.is-copied .copy-confirmation { display: block; }
 
 .section-nav {
   display: flex;
@@ -493,6 +497,18 @@ pre {
 
 /* ---------- utilities ---------- */
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: fixed;
   top: 10px;
@@ -551,7 +567,6 @@ pre {
   .portrait { width: 76px; height: 76px; border-radius: 14px; }
   h1 { font-size: 23px; }
   .role { font-size: 13px; }
-  .contact a { padding: 3px 9px; font-size: 12px; }
   .lead { font-size: 16px; }
   .news-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .news-date { justify-self: start; }

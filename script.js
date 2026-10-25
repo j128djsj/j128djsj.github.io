@@ -67,24 +67,33 @@ copyButton.addEventListener("click", async () => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// The email chip copies the address instead of relying on a mailto: handler, which silently
+// The email icon copies the address instead of relying on a mailto: handler, which silently
 // does nothing on machines without a default mail app.
 const copyLink = document.querySelector("[data-copy]");
 if (copyLink) {
+  const emailLabel = copyLink.getAttribute("aria-label");
+  const emailTitle = copyLink.title;
+  const contactStatus = document.getElementById("contact-status");
+  let copyResetTimeout;
   copyLink.addEventListener("click", async event => {
+    event.preventDefault();
     const value = copyLink.dataset.copy;
     try {
       await navigator.clipboard.writeText(value);
-      event.preventDefault();
-      const label = copyLink.textContent;
-      copyLink.textContent = "Copied";
+      window.clearTimeout(copyResetTimeout);
       copyLink.classList.add("is-copied");
-      window.setTimeout(() => {
-        copyLink.textContent = label;
+      copyLink.setAttribute("aria-label", "Email address copied to clipboard");
+      copyLink.title = "Email copied!";
+      contactStatus.textContent = "Email address copied to clipboard.";
+      copyResetTimeout = window.setTimeout(() => {
         copyLink.classList.remove("is-copied");
+        copyLink.setAttribute("aria-label", emailLabel);
+        copyLink.title = emailTitle;
+        contactStatus.textContent = "";
       }, 1600);
     } catch {
-      // Clipboard unavailable (http, permissions): keep the default mailto: behaviour.
+      // Fall back to the email handler when clipboard access is unavailable.
+      window.location.href = copyLink.href;
     }
   });
 }

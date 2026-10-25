@@ -143,19 +143,19 @@ h1 {
 /* ---------- pull quote ---------- */
 
 .pullquote {
-  margin: 46px 0 0;
-  padding: 24px 12px;
+  margin: 28px 0 0;
+  padding: 18px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  text-align: center;
+  text-align: left;
 }
 .pullquote p {
   margin: 0;
   font-family: Georgia, "Times New Roman", "Songti SC", serif;
   font-style: italic;
-  font-size: 19px;
-  line-height: 1.5;
-  color: var(--heading);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
   text-wrap: balance;
 }
 
@@ -513,6 +513,7 @@ pre {
   .role { margin-bottom: 12px; }
   .contact { margin-bottom: 0; grid-column: 2; }
   .section-nav, .updated { display: none; }
+  .pullquote { grid-column: 1 / -1; margin-top: 24px; padding: 16px 0; }
   section + section { margin-top: 38px; }
 }
 
@@ -536,7 +537,7 @@ pre {
   .publication h3 { font-size: 16px; }
   .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .entry-date { color: var(--muted); }
-  .pullquote { margin-top: 36px; padding: 20px 4px; }
+  .pullquote { padding: 14px 0; }
   .pullquote p { font-size: 17px; }
 }
 

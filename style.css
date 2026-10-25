@@ -196,8 +196,12 @@ h2::after {
   height: 16px;
   flex: 0 0 16px;
   margin-right: -6px;
-  color: #647b96;
+  color: #2563eb;
 }
+#news-title .section-icon { color: #ea580c; }
+#publications-title .section-icon { color: #0f766e; }
+#research-title .section-icon { color: #7c3aed; }
+#education-title .section-icon { color: #1d4ed8; }
 
 .lead {
   font-size: 17px;

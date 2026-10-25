@@ -191,6 +191,13 @@ h2::after {
   height: 1px;
   background: var(--line);
 }
+.section-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin-right: -6px;
+  color: #647b96;
+}
 
 .lead {
   font-size: 17px;

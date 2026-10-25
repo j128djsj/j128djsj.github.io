@@ -376,6 +376,15 @@ h2::after {
   background: var(--line);
 }
 
+.entry-body {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+.school-logo { display: block; width: 64px; height: 64px; }
+.school-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.entry-main { min-width: 0; }
 .entry-main h3 {
   margin: 0 0 1px;
   color: var(--heading);
@@ -568,6 +577,8 @@ pre {
   .news-date { justify-self: start; }
   .publication h3 { font-size: 16px; }
   .entry { padding-left: 24px; }
+  .entry-body { grid-template-columns: 48px minmax(0, 1fr); gap: 12px; }
+  .school-logo { width: 48px; height: 48px; align-self: start; margin-top: 2px; }
   .entry-date { color: var(--muted); }
 }
 

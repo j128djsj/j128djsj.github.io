@@ -88,3 +88,85 @@ if (copyLink) {
     }
   });
 }
+
+// Keep the celebration local to News and remove every particle after its short animation.
+const newsSection = document.getElementById("news");
+const celebrateButtons = [...document.querySelectorAll(".celebrate-button")];
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let celebrationRunning = false;
+
+function celebrate(button) {
+  if (celebrationRunning || document.hidden) return;
+  celebrationRunning = true;
+  button.classList.add("is-celebrating");
+
+  const finish = () => {
+    button.classList.remove("is-celebrating");
+    celebrationRunning = false;
+  };
+  if (reducedMotion.matches || typeof Element.prototype.animate !== "function") {
+    window.setTimeout(finish, 700);
+    return;
+  }
+
+  const layer = document.createElement("div");
+  layer.className = "celebration-layer";
+  layer.setAttribute("aria-hidden", "true");
+  newsSection.append(layer);
+
+  const bounds = layer.getBoundingClientRect();
+  const origin = button.getBoundingClientRect();
+  const x = origin.left + origin.width / 2 - bounds.left;
+  const y = origin.top + origin.height / 2 - bounds.top;
+  const colors = ["#c58d35", "#41956c", "#e1b85e", "#78ad8b", "#d99073"];
+  const animations = [];
+
+  for (let burst = 0; burst < 3; burst += 1) {
+    for (let index = 0; index < 16; index += 1) {
+      const particle = document.createElement("i");
+      particle.className = "firework-particle";
+      particle.style.left = `${x + burst * 36}px`;
+      particle.style.top = `${y - 12 - burst * 7}px`;
+      particle.style.setProperty("--spark-color", colors[(index + burst) % colors.length]);
+      layer.append(particle);
+
+      const angle = (index / 16) * Math.PI * 2;
+      const distance = 25 + Math.random() * 30;
+      const dx = Math.cos(angle) * distance;
+      const dy = Math.sin(angle) * distance;
+      const animation = particle.animate([
+        { transform: "translate(-50%, -50%) scale(0.4)", opacity: 0 },
+        { opacity: 0.9, offset: 0.12 },
+        { transform: `translate(${dx}px, ${dy}px) scale(0.8)`, opacity: 0.7, offset: 0.65 },
+        { transform: `translate(${dx * 1.2}px, ${dy + 20}px) scale(0.2)`, opacity: 0 }
+      ], {
+        duration: 950,
+        delay: burst * 190,
+        easing: "cubic-bezier(.15,.55,.4,1)",
+        fill: "both"
+      });
+      animations.push(animation);
+    }
+  }
+
+  const stopAnimation = () => {
+    if (reducedMotion.matches) animations.forEach(animation => animation.cancel());
+  };
+  reducedMotion.addEventListener("change", stopAnimation);
+  Promise.allSettled(animations.map(animation => animation.finished)).then(() => {
+    reducedMotion.removeEventListener("change", stopAnimation);
+    layer.remove();
+    finish();
+  });
+}
+
+celebrateButtons.forEach(button => button.addEventListener("click", () => celebrate(button)));
+
+if (newsSection && celebrateButtons.length && "IntersectionObserver" in window) {
+  const newsObserver = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    celebrate(celebrateButtons[0]);
+    newsObserver.disconnect();
+  }, { threshold: 0.4 });
+  newsObserver.observe(newsSection);
+}

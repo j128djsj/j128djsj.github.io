@@ -551,3 +551,43 @@ pre {
   .section-nav, .skip-link, footer, dialog, .updated { display: none !important; }
   .publication, .entry { break-inside: avoid; }
 }
+
+/* Local News celebration; the original page styles are preserved above. */
+#news { position: relative; isolation: isolate; }
+.celebrate-button {
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  font-size: 1em;
+  line-height: inherit;
+  touch-action: manipulation;
+}
+.celebrate-button:hover, .celebrate-button.is-celebrating { background: var(--chip-bg); }
+.celebration-layer {
+  position: absolute;
+  inset: -16px;
+  z-index: 2;
+  overflow: hidden;
+  overflow: clip;
+  pointer-events: none;
+  border-radius: 12px;
+}
+.firework-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--spark-color);
+  box-shadow: 0 0 5px var(--spark-color);
+}
+@media (max-width: 560px) {
+  .celebration-layer { inset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .celebration-layer { display: none; }
+}
+@media print {
+  .celebration-layer { display: none; }
+  .celebrate-button { visibility: hidden; }
+}

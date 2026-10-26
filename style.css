@@ -283,6 +283,13 @@ h2::after {
 }
 .venue em { font-style: italic; }
 
+.pub-type {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: var(--faint);
+  font-weight: 500;
+}
+
 .tag {
   color: var(--muted);
   font-size: 14px;

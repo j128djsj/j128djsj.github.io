@@ -101,7 +101,7 @@ h1 {
   gap: 12px;
   margin-top: 14px;
   margin-bottom: 24px;
-  justify-content: center;
+  padding-left: calc((100% - 128px) / 2);
 }
 .contact a {
   display: inline-flex;
@@ -133,7 +133,7 @@ h1 {
   gap: 2px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
-  align-items: center;
+  padding-left: calc((100% - 128px) / 2);
 }
 .section-nav a {
   padding: 4px 0;
@@ -146,7 +146,7 @@ h1 {
   margin: 22px 0 0;
   color: var(--faint);
   font-size: 11.5px;
-  text-align: center;
+  padding-left: calc((100% - 128px) / 2);
 }
 
 /* ---------- content ---------- */
@@ -540,7 +540,7 @@ pre {
     margin: 0;
   }
   h1 { margin: 0 0 4px; font-size: 25px; text-align: left; }
-  .contact { margin-top: 8px; margin-bottom: 0; grid-column: 2; justify-content: flex-start; }
+  .contact { margin-top: 8px; margin-bottom: 0; grid-column: 2; padding-left: 0; }
   .section-nav, .updated { display: none; }
   .site-footer { margin-top: 38px; }
   section + section { margin-top: 38px; }

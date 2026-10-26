@@ -81,6 +81,7 @@ sup { font-size: 0.7em; line-height: 0; }
   border-radius: 20px;
   object-fit: cover;
   background: var(--chip-bg);
+  margin: 0 auto;
 }
 
 h1 {
@@ -91,6 +92,7 @@ h1 {
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--heading);
+  text-align: center;
 }
 
 .contact {
@@ -532,8 +534,9 @@ pre {
     width: 96px;
     height: 96px;
     border-radius: 16px;
+    margin: 0;
   }
-  h1 { margin: 0 0 4px; font-size: 25px; }
+  h1 { margin: 0 0 4px; font-size: 25px; text-align: left; }
   .contact { margin-top: 8px; margin-bottom: 0; grid-column: 2; }
   .section-nav, .updated { display: none; }
   .site-footer { margin-top: 38px; }
@@ -550,8 +553,8 @@ pre {
     box-shadow: none;
   }
   .sidebar { grid-template-columns: 76px minmax(0, 1fr); gap: 0 16px; margin-bottom: 30px; }
-  .portrait { width: 76px; height: 76px; border-radius: 14px; }
-  h1 { font-size: 23px; }
+  .portrait { width: 76px; height: 76px; border-radius: 14px; margin: 0; }
+  h1 { font-size: 23px; text-align: left; }
   .lead { font-size: 16px; }
   .news-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .news-date { justify-self: start; }

@@ -343,12 +343,6 @@ h2::after {
   border-radius: 50%;
   background: #333333;
 }
-.entry:first-of-type::before {
-  background: transparent;
-  border: 2px solid #808080;
-  top: 4px;
-  left: -2px;
-}
 .entry:not(:last-child)::after {
   content: "";
   position: absolute;

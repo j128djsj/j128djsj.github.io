@@ -97,8 +97,8 @@ h1 {
 
 .contact {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
+  gap: 6px;
   margin-top: 14px;
   margin-bottom: 24px;
   padding-left: calc((100% - 128px) / 2);
@@ -106,26 +106,35 @@ h1 {
 .contact a {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 6px;
+  gap: 10px;
+  width: auto;
+  height: auto;
+  padding: 4px 8px;
   border-radius: 6px;
   color: #4d4d4d;
 }
-.contact-icon, .copy-confirmation { width: 24px; height: 24px; flex: 0 0 auto; }
+.contact-icon, .copy-confirmation { width: 18px; height: 18px; flex: 0 0 auto; }
+.contact-label {
+  font-size: 13px;
+  line-height: 1;
+}
 .copy-confirmation { display: none; }
 .contact a:hover {
-  color: var(--heading);
+  color: #000;
   background: var(--chip-bg);
   text-decoration: none;
 }
 .contact a.is-copied {
-  color: var(--heading);
+  color: #000;
   background: var(--chip-bg);
 }
 .contact a.is-copied .contact-icon { display: none; }
 .contact a.is-copied .copy-confirmation { display: block; }
+.contact a.is-copied .contact-label::after {
+  content: " copied";
+  color: var(--faint);
+  font-size: 11px;
+}
 
 .section-nav {
   display: flex;
